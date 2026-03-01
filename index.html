@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #e50914; /* Netflix Red */
-            --bg-color: #0f0f0f;
-            --card-bg: rgba(255, 255, 255, 0.1);
+            --primary-color: #e50914;
+            --bg-color: #0b0b0b;
+            --card-bg: rgba(255, 255, 255, 0.05);
         }
 
         body {
@@ -23,70 +23,61 @@
             align-items: center;
         }
 
-        /* Logo and Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            box-shadow: 0 0 15px var(--primary-color);
-            object-fit: cover;
-        }
-
-        h1 {
-            font-size: 22px;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Search Bar */
-        .search-container {
-            width: 100%;
-            max-width: 400px;
             margin-bottom: 25px;
         }
 
+        /* Logo සැකසුම */
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
         .search-bar {
-            width: 100%;
+            width: 90%;
+            max-width: 350px;
             padding: 12px 20px;
-            border-radius: 25px;
-            border: none;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
             background: var(--card-bg);
             color: white;
+            margin-bottom: 25px;
             backdrop-filter: blur(10px);
             outline: none;
         }
 
-        /* Movie Grid */
         .movie-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             width: 100%;
+            max-width: 500px;
         }
 
         .movie-card {
             background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            backdrop-filter: blur(5px);
             border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .movie-card:active {
-            transform: scale(0.95);
+            transition: 0.3s;
         }
 
         .movie-poster {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
 
@@ -96,54 +87,49 @@
         }
 
         .movie-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 8px;
             display: block;
+            margin-bottom: 8px;
         }
 
         .download-btn {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 8px;
+            border-radius: 10px;
+            width: 100%;
             font-weight: bold;
             cursor: pointer;
-            width: 100%;
+            transition: 0.2s;
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #666;
+        .download-btn:active {
+            transform: scale(0.9);
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <img src="YOUR_LOGO_URL_HERE" alt="Movie Expert Logo" class="logo">
+        <img src="photo_2026-03-01_18-59-36.jpg" alt="Logo" class="logo">
         <h1>Movie Expert Official</h1>
     </div>
 
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="සර්, චිත්‍රපටයක් සොයන්න...">
-    </div>
+    <input type="text" class="search-bar" placeholder="චිත්‍රපටයක් සොයන්න, සර්...">
 
     <div class="movie-grid">
         <div class="movie-card">
-            <img src="https://via.placeholder.com/150x200" alt="Poster" class="movie-poster">
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u6Y97G9uYSk49iV6lCu68i9966s.jpg" class="movie-poster">
             <div class="movie-info">
-                <span class="movie-title">The Batman</span>
-                <button class="download-btn" onclick="sendToBot('Batman2022')">Download Now</button>
+                <span class="movie-title">Moana 2</span>
+                <button class="download-btn" onclick="sendToBot('Moana2')">Download Now</button>
             </div>
         </div>
 
         <div class="movie-card">
-            <img src="https://via.placeholder.com/150x200" alt="Poster" class="movie-poster">
+            <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aosm8N9unLcZd9Yz4-Zfs6qZpAV.jpg" class="movie-poster">
             <div class="movie-info">
                 <span class="movie-title">Avatar 2</span>
                 <button class="download-btn" onclick="sendToBot('Avatar2')">Download Now</button>
@@ -151,21 +137,15 @@
         </div>
     </div>
 
-    <div class="footer">
-        © 2026 Movie Expert Official - Powered by Telegram
-    </div>
-
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand(); // Mini App එක Full screen කරන්න
+        tg.expand();
 
         function sendToBot(movieId) {
-            // මෙතනදී තමයි Monetag එකට සම්බන්ධ කරන්නේ
-            alert("Ads පෙන්වා පසුව Bot වෙත දත්ත යවයි: " + movieId);
-            
-            // Bot වෙත දත්ත යැවීමට
-            // tg.sendData(movieId); 
+            // මෙතනට පසුව Monetag Script එක දාමු
+            tg.sendData(movieId);
+            tg.close();
         }
     </script>
 </body>
