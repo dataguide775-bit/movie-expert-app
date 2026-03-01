@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Expert Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e50914; /* Netflix Red */
+            --bg-color: #0f0f0f;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo and Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Search Bar */
+        .search-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 25px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            background: var(--card-bg);
+            color: white;
+            backdrop-filter: blur(10px);
+            outline: none;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:active {
+            transform: scale(0.95);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .movie-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="YOUR_LOGO_URL_HERE" alt="Movie Expert Logo" class="logo">
+        <h1>Movie Expert Official</h1>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="සර්, චිත්‍රපටයක් සොයන්න...">
+    </div>
+
+    <div class="movie-grid">
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/150x200" alt="Poster" class="movie-poster">
+            <div class="movie-info">
+                <span class="movie-title">The Batman</span>
+                <button class="download-btn" onclick="sendToBot('Batman2022')">Download Now</button>
+            </div>
+        </div>
+
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/150x200" alt="Poster" class="movie-poster">
+            <div class="movie-info">
+                <span class="movie-title">Avatar 2</span>
+                <button class="download-btn" onclick="sendToBot('Avatar2')">Download Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Movie Expert Official - Powered by Telegram
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Mini App එක Full screen කරන්න
+
+        function sendToBot(movieId) {
+            // මෙතනදී තමයි Monetag එකට සම්බන්ධ කරන්නේ
+            alert("Ads පෙන්වා පසුව Bot වෙත දත්ත යවයි: " + movieId);
+            
+            // Bot වෙත දත්ත යැවීමට
+            // tg.sendData(movieId); 
+        }
+    </script>
+</body>
+</html>
