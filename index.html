@@ -72,6 +72,8 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
+            display: flex; /* මම මේක එකතු කළා */
+            flex-direction: column;
         }
 
         .movie-poster {
@@ -83,6 +85,10 @@
         .movie-info {
             padding: 10px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
         .movie-title {
@@ -116,9 +122,9 @@
         <h1>Movie Expert Official</h1>
     </div>
 
-    <input type="text" class="search-bar" placeholder="චිත්‍රපටයක් සොයන්න, සර්...">
+    <input type="text" id="searchInput" class="search-bar" onkeyup="filterMovies()" placeholder="චිත්‍රපටයක් සොයන්න, සර්...">
 
-    <div class="movie-grid">
+    <div class="movie-grid" id="movieGrid">
         <div class="movie-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrcWfbFERV30vGQzkfSaN53EbAOXi-xKBy07UaIfGDPqPKE6D6XdskHmtTmNfhLCQPbgM-&s=10" class="movie-poster">
             <div class="movie-info">
@@ -134,27 +140,24 @@
                 <button class="download-btn" onclick="handleDownload('rrr2022', 'https://www.effectivegatecpm.com/gpga5p91p?key=904576eba2b7b7b7545a2087406f4152')">Download Now</button>
             </div>
         </div>
-    </div>
 
-     <div class="movie-card">
+        <div class="movie-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FFJNBaIXvhEwqXXw40rYYDci8jPlYxWfy9082flliYoZ-SqqZjy0az-G5rIWuSJp2pn7xQ&s=10" class="movie-poster">
             <div class="movie-info">
                 <span class="movie-title">Oppenheimer 2023</span>
                 <button class="download-btn" onclick="handleDownload('oppenheimer2023', 'https://www.effectivegatecpm.com/gpga5p91p?key=904576eba2b7b7b7545a2087406f4152')">Download Now</button>
             </div>
         </div>
-    </div>
-    
-     <div class="movie-card">
+
+        <div class="movie-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1JuD1fDYYs7-IqHydpi304Jr3eZsBW9i58o6yTa7d3tGzKFJvcFGwatAtxLIhTZaWJ8tY&s=10" class="movie-poster">
             <div class="movie-info">
                 <span class="movie-title">Jurassic Park 1993</span>
                 <button class="download-btn" onclick="handleDownload('jurassicpark1993', 'https://www.effectivegatecpm.com/gpga5p91p?key=904576eba2b7b7b7545a2087406f4152')">Download Now</button>
             </div>
         </div>
-    </div>
 
-     <div class="movie-card">
+        <div class="movie-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXcUAd-WXG2PutJ0Ver4o6oRB_HnSFbVR7xnWFLh_YYcj5FAwKKOcQemRDQ8Uu8FOwrfxH&s=10" class="movie-poster">
             <div class="movie-info">
                 <span class="movie-title">The Lost World: Jurassic Park</span>
@@ -166,47 +169,28 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
     function handleDownload(movieId, adLink) {
-        // 1. Ad එක අලුත් Tab එකක Open කරනවා
         window.open(adLink, '_blank');
-
-        // 2. තත්පර 2කින් පසු Bot එකට රැගෙන ගොස් Movie එක ඉල්ලනවා
-        // මෙතන '@movieexpertofficialbot' වෙනුවට සර්ගේ බොට්ගේ නම (@ නැතිව) දාන්න
-        // උදා: movieexpertofficialbot
         setTimeout(() => {
             window.location.href = "https://t.me/movieexpertofficialbot?start=" + movieId;
         }, 2000);
     }
-       <script>
-function filterMovies() {
-    // සර්ච් බාර් එකේ ටයිප් කරන දේ ලබාගන්නවා
-    let input = document.getElementById('searchInput').value.toLowerCase();
-    
-    // හැම මූවී කාඩ් එකක්ම ලබාගන්නවා
-    let cards = document.getElementsByClassName('movie-card');
 
-    for (let i = 0; i < cards.length; i++) {
-        // මූවී කාඩ් එක ඇතුළේ තියෙන "movie-title" එකේ නම ලබාගන්නවා
-        let titleElement = cards[i].querySelector('.movie-title');
-        
-        if (titleElement) {
-            let titleText = titleElement.innerText.toLowerCase();
-            
-            // අකුරු ගැලපෙනවා නම් පෙන්වනවා, නැත්නම් හංගනවා
-            if (titleText.includes(input)) {
-                cards[i].style.display = "flex"; // සර්ගේ style එක අනුව flex හෝ block දාන්න
-            } else {
-                cards[i].style.display = "none";
+    function filterMovies() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('movie-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let titleElement = cards[i].querySelector('.movie-title');
+            if (titleElement) {
+                let titleText = titleElement.innerText.toLowerCase();
+                if (titleText.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
             }
         }
     }
-}
-</script>
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
