@@ -138,19 +138,18 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
+    function handleDownload(movieId, adLink) {
+        // 1. Ad එක අලුත් Tab එකක Open කරනවා
+        window.open(adLink, '_blank');
 
-        function handleDownload(movieId, adLink) {
-            // 1. Ad එක අලුත් Tab එකක Open කරනවා
-            window.open(adLink, '_blank');
-
-            // 2. තත්පර 2කින් පසු Bot එකට Data යවා App එක වසා දමනවා
-            setTimeout(() => {
-                tg.sendData(movieId);
-                tg.close();
-            }, 2000);
-        }
-    </script>
+        // 2. තත්පර 2කින් පසු Bot එකට රැගෙන ගොස් Movie එක ඉල්ලනවා
+        // මෙතන '@movieexpertofficialbot' වෙනුවට සර්ගේ බොට්ගේ නම (@ නැතිව) දාන්න
+        // උදා: movieexpertofficialbot
+        setTimeout(() => {
+            window.location.href = "https://t.me/movieexpertofficialbot?start=" + movieId;
+        }, 2000);
+    }
+</script>
 </body>
 </html>
+
