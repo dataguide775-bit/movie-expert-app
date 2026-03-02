@@ -176,29 +176,34 @@
             window.location.href = "https://t.me/movieexpertofficialbot?start=" + movieId;
         }, 2000);
     }
-        <script>
+       <script>
 function filterMovies() {
-    // සර් ටයිප් කරන දේ ගන්නවා
+    // සර්ච් බාර් එකේ ටයිප් කරන දේ ලබාගන්නවා
     let input = document.getElementById('searchInput').value.toLowerCase();
-    // හැම මූවී කාඩ් එකක්ම ගන්නවා
+    
+    // හැම මූවී කාඩ් එකක්ම ලබාගන්නවා
     let cards = document.getElementsByClassName('movie-card');
 
     for (let i = 0; i < cards.length; i++) {
-        // මූවී එකේ නම තියෙන තැන බලනවා (h3 හෝ p)
-        let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        // මූවී කාඩ් එක ඇතුළේ තියෙන "movie-title" එකේ නම ලබාගන්නවා
+        let titleElement = cards[i].querySelector('.movie-title');
         
-        // අකුරු ගැලපෙනවා නම් පෙන්වනවා, නැත්නම් හංගනවා
-        if (title.includes(input)) {
-            cards[i].style.display = "";
-        } else {
-            cards[i].style.display = "none";
+        if (titleElement) {
+            let titleText = titleElement.innerText.toLowerCase();
+            
+            // අකුරු ගැලපෙනවා නම් පෙන්වනවා, නැත්නම් හංගනවා
+            if (titleText.includes(input)) {
+                cards[i].style.display = "flex"; // සර්ගේ style එක අනුව flex හෝ block දාන්න
+            } else {
+                cards[i].style.display = "none";
+            }
         }
     }
 }
 </script>
-</script>
 </body>
 </html>
+
 
 
 
